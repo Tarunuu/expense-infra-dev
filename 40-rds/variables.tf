@@ -23,3 +23,7 @@ variable "rds_tags" {
     Component = "mysql"
   }
 }
+
+variable "zone_name" {
+  default = "nobody0.online"
+}
