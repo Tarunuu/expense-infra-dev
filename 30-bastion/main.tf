@@ -1,8 +1,8 @@
 module "bastion" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
-  
-  ami = data.aws_ami.nobody0.id
+
+  ami  = data.aws_ami.nobody0.id
   name = local.resource_name
 
   instance_type          = "t3.micro"
@@ -13,7 +13,7 @@ module "bastion" {
     var.common_tags,
     var.bastion_tags,
     {
-        Name = local.resource_name
+      Name = local.resource_name
     }
   )
 }

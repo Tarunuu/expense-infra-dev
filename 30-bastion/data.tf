@@ -10,8 +10,8 @@ data "aws_ssm_parameter" "public_subnet_ids" {
 
 data "aws_ami" "nobody0" {
 
-  most_recent      = true
-  owners           = ["973714476881"]
+  most_recent = true
+  owners      = ["973714476881"]
 
   filter {
     name   = "name"
