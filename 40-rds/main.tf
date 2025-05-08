@@ -8,15 +8,15 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 5
 
-  db_name  = "transactions"
-  username = "root"
+  db_name                     = "transactions"
+  username                    = "root"
   manage_master_user_password = false
-  password = "ExpenseApp1"
-  port     = "3306"
+  password                    = "ExpenseApp1"
+  port                        = "3306"
 
 
   vpc_security_group_ids = [local.mysql_sg_id]
-  skip_final_snapshot = true
+  skip_final_snapshot    = true
 
   tags = merge(
     var.common_tags,
@@ -62,18 +62,18 @@ module "db" {
 }
 
 module "records" {
-  source  = "terraform-aws-modules/route53/aws//modules/records"
+  source = "terraform-aws-modules/route53/aws//modules/records"
 
   zone_name = var.zone_name
 
   records = [
-    
+
     {
-      name    = "mysql-${var.environment}" #mysql-dev.nobody0.online
-      type    = "CNAME"
-      ttl     = 1
+      name = "mysql-${var.environment}" #mysql-dev.nobody0.online
+      type = "CNAME"
+      ttl  = 1
       records = [
-        module.db.db_instance_address 
+        module.db.db_instance_address
       ]
       allow_overwrite = true
     },
